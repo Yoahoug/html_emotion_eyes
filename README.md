@@ -673,26 +673,6 @@ CMD ["npx", "http-server", "-p", "3000"]
 
 ---
 
-## 📚 学习资源
-
-- [CSS Animations - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations)
-- [CSS Transforms - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
-- [CSS Variables - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
-- [Can I Use](https://caniuse.com/) - 浏览器兼容性查询
-
----
-
-## 🎯 路线图
-
-- [x] 基础情感模块库
-- [x] 核心控制器实现
-- [x] 文档和示例
-- [ ] 官方网站和在线演示
-- [ ] 移动应用集成示例
-- [ ] 性能监测工具
-- [ ] 云端情感定制平台
-
----
 
 ## 🙏 致谢
 
