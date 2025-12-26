@@ -1,0 +1,29 @@
+/* Touched 3: 害羞 - 不好意思地看向下方 */
+.face.touched { --eye-color: #ff9966; }
+
+.face.touched .eye-wrapper {
+    /* 眼睛位置往下移 */
+    transform: translateY(20px);
+}
+
+.face.touched .eye {
+    height: 90px; width: 100px; 
+    border-radius: 50% 50% 40% 40%;
+    /* 眼神向左下和右下躲闪 */
+    animation: shy-glance 4s infinite ease-in-out;
+}
+.face.touched .left .eye { transform-origin: top right; }
+.face.touched .right .eye { transform-origin: top left; }
+
+/* 脸红加强 */
+.face.touched .cheek {
+    opacity: 1;
+    background: #ff5555;
+    transform: scale(1.5);
+    filter: blur(15px);
+}
+
+@keyframes shy-glance {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg) scaleY(0.9); } /* 稍微闭一点眼 */
+}

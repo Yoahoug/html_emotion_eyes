@@ -1,0 +1,15 @@
+/* Surprised 3: 瞪大眼 - 眼睛撑到最大 */
+.face.surprised { --eye-color: #ffffdd; }
+
+.face.surprised .eye {
+    width: 140px; height: 140px; /* 撑大 */
+    border: 4px solid #fff; /* 加个边框增加张力 */
+    background-color: transparent; /* 空心 */
+    box-shadow: 0 0 30px var(--eye-color);
+    animation: wide-pulse 2s infinite;
+}
+
+@keyframes wide-pulse {
+    0%, 100% { transform: scale(1); border-width: 4px; }
+    50% { transform: scale(1.05); border-width: 8px; }
+}

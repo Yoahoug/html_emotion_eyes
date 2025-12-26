@@ -1,0 +1,36 @@
+/* Sad 3: 融化 - 悲伤得流下来了 */
+.face.sad {
+    --eye-color: #0066cc;
+    transform: translateY(20px);
+}
+
+.face.sad .eye {
+    width: 100px;
+    height: 100px;
+    background-color: var(--eye-color);
+    
+    /* 初始形状：上窄下宽的水滴 */
+    border-radius: 50% 50% 50% 50%;
+    
+    animation: melt-drip 3s infinite ease-in-out;
+}
+
+@keyframes melt-drip {
+    0% { 
+        border-radius: 50%; 
+        height: 100px; 
+        transform: scaleY(1);
+    }
+    50% { 
+        /* 变成长条水滴状 */
+        border-radius: 40% 40% 60% 60%; 
+        height: 130px; 
+        transform: translateY(10px) scaleX(0.9);
+        opacity: 0.6;
+    }
+    100% { 
+        border-radius: 50%; 
+        height: 100px; 
+        transform: scaleY(1);
+    }
+}

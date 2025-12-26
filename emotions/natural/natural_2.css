@@ -1,0 +1,36 @@
+/* 灵动观察 (Active Scan)：动作幅度和频率都增加，一眼就能看出区别 */
+.face.natural {
+    /* 增加整体的轻微摆动，不只是眼球在动 */
+    animation: head-tilt 8s infinite ease-in-out;
+}
+
+.face.natural .eye-wrapper {
+    /* 眼球明显的左右扫视 */
+    animation: eye-scan 5s infinite;
+}
+
+.face.natural .eye {
+    /* 保持轻微的“聚焦”呼吸感 */
+    animation: breathe-focus 2.5s infinite ease-in-out;
+}
+
+/* 头部左右歪一点点，显得好奇 */
+@keyframes head-tilt {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+/* 更有节奏的扫视：左 -> 中 -> 右 -> 中 */
+@keyframes eye-scan {
+    0%, 10% { transform: translate(0, 0); }           /* 中间 */
+    15%, 35% { transform: translate(-35px, 0); }      /* 快速看左边 */
+    40%, 60% { transform: translate(0, 0); }          /* 回到中间 */
+    65%, 85% { transform: translate(35px, 0); }       /* 快速看右边 */
+    90%, 100% { transform: translate(0, 0); }
+}
+
+@keyframes breathe-focus {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}

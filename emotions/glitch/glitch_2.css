@@ -1,0 +1,21 @@
+/* Glitch 2: RGB色散 - 利用伪元素做红蓝重影 */
+.face.glitch { --eye-color: #00ff00; }
+
+.face.glitch .eye {
+    position: relative;
+    background: white; /* 主体白色 */
+    mix-blend-mode: lighten;
+    animation: glitch-skew 0.3s infinite;
+}
+
+.face.glitch .eye::before, .face.glitch .eye::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+    opacity: 0.8; mix-blend-mode: screen;
+}
+
+.face.glitch .eye::before { background: #ff0000; animation: glitch-red 0.1s infinite; }
+.face.glitch .eye::after { background: #0000ff; animation: glitch-blue 0.1s infinite; }
+
+@keyframes glitch-red { 0% {transform:translate(0);} 50% {transform:translate(-5px, 2px);} 100% {transform:translate(0);} }
+@keyframes glitch-blue { 0% {transform:translate(0);} 50% {transform:translate(5px, -2px);} 100% {transform:translate(0);} }
+@keyframes glitch-skew { 0% {transform:skew(0);} 20% {transform:skew(20deg);} 100% {transform:skew(0);} }

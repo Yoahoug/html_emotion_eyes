@@ -1,0 +1,30 @@
+/* Happy 3: 星星眼 - 充满希望和崇拜 */
+.face.happy { 
+    --eye-color: #ffd700; /* 金色 */
+    animation: happy-sway 2s infinite ease-in-out alternate;
+}
+
+.face.happy .eye {
+    width: 100px; 
+    height: 100px;
+    border-radius: 0;
+    background-color: var(--eye-color);
+    
+    /* 绘制五角星 */
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    
+    /* 闪烁动画 */
+    animation: star-twinkle 0.6s infinite alternate;
+}
+
+.face.happy .left .eye { animation-delay: 0s; transform: rotate(-10deg); }
+.face.happy .right .eye { animation-delay: 0.3s; transform: rotate(10deg); }
+
+@keyframes happy-sway {
+    from { transform: rotate(-2deg); } to { transform: rotate(2deg); }
+}
+
+@keyframes star-twinkle {
+    0% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
+    100% { transform: scale(1.1) rotate(10deg); opacity: 1; box-shadow: 0 0 30px #ffd700; }
+}

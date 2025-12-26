@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Emotion Eyes - 完整演示</title>
+    
+    <link rel="stylesheet" href="../css/core.css">
+    <link rel="stylesheet" href="../emotions/natural/natural_1.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .face-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 400px;
+        }
+
+        .emotion-stats {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-transform: capitalize;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .controls-group {
+            width: 100%;
+        }
+
+        .group-title {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-buttons button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 10px 20px;
+            font-size: 0.9em;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .info-box h3 {
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .emotion-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .emotion-item {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .controls {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .face-container {
+                padding: 20px;
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .controls {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .current-emotion {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>🎭 Emotion Eyes Demo</h1>
+            <p class="subtitle">12 种情感 × 3 种风格 = 36 种表情动画</p>
+        </div>
+
+        <div class="face-container">
+            <div class="face natural" id="face">
+                <div class="eye-wrapper left">
+                    <div class="eye"></div>
+                    <div class="cheek"></div>
+                </div>
+                <div class="eye-wrapper right">
+                    <div class="eye"></div>
+                    <div class="cheek"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="emotion-stats">
+            <div>当前表情: <span id="current">natural</span></div>
+            <div>已加载样式: <span id="loaded">1</span> 个</div>
+        </div>
+
+        <!-- 基础情感 -->
+        <div class="controls-group">
+            <div class="group-title">💬 基础情感</div>
+            <div class="controls">
+                <button onclick="setEmotion('natural')">😐 自然</button>
+                <button onclick="setEmotion('happy')">😊 开心</button>
+                <button onclick="setEmotion('sad')">😢 伤心</button>
+                <button onclick="setEmotion('angry')">😠 愤怒</button>
+                <button onclick="setEmotion('surprised')">😲 惊讶</button>
+                <button onclick="setEmotion('thinking')">🤔 思考</button>
+            </div>
+        </div>
+
+        <!-- 高级情感 -->
+        <div class="controls-group">
+            <div class="group-title">✨ 高级情感</div>
+            <div class="controls">
+                <button onclick="setEmotion('touched')">😳 害羞</button>
+                <button onclick="setEmotion('love')">💕 爱慕</button>
+                <button onclick="setEmotion('crying')">😭 哭泣</button>
+                <button onclick="setEmotion('disappointed')">😞 失望</button>
+                <button onclick="setEmotion('reject')">😒 拒绝</button>
+                <button onclick="setEmotion('glitch')">🔌 故障</button>
+            </div>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="controls-group">
+            <div class="group-title">⚡ 操作</div>
+            <div class="action-buttons">
+                <button onclick="playSequence()">播放序列</button>
+                <button onclick="randomEmote()">随机表情</button>
+                <button onclick="resetEmotion()">重置</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📖 使用说明</h3>
+            <p>点击任何按钮可以立即切换表情。表情会平滑过渡，动画流畅自然。</p>
+            <p>✨ <strong>特色功能</strong>：</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>12 种基础情感类型</li>
+                <li>每种情感 3 种不同的动画风格</li>
+                <li>流畅的过渡动画</li>
+                <li>支持自定义颜色和动画</li>
+                <li>零依赖，纯 CSS 实现</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>🚀 快速开始</h3>
+            <p>在你的项目中使用 Emotion Eyes：</p>
+            <pre style="background: rgba(0, 0, 0, 0.2); padding: 10px; border-radius: 5px; margin-top: 10px; overflow-x: auto;"><code>&lt;link rel="stylesheet" href="css/core.css"&gt;
+&lt;link rel="stylesheet" href="emotions/happy/happy_1.css"&gt;
+
+&lt;div class="face happy"&gt;
+    &lt;div class="eye-wrapper left"&gt;
+        &lt;div class="eye"&gt;&lt;/div&gt;
+        &lt;div class="cheek"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="eye-wrapper right"&gt;
+        &lt;div class="eye"&gt;&lt;/div&gt;
+        &lt;div class="cheek"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="info-box">
+            <h3>💼 商用授权</h3>
+            <p>本项目支持商用。需要商用授权、定制服务或技术支持？</p>
+            <p style="margin-top: 10px; color: #667eea; font-weight: bold;">
+                📧 联系: yoahoug@gmail.com
+            </p>
+        </div>
+    </div>
+
+    <script src="../js/emotion-controller.js"></script>
+    <script>
+        // 创建控制器实例
+        const emotionEyes = new EmotionController('#face', {
+            emotionDir: '../emotions/',
+            transitionTime: 300,
+            defaultEmotion: 'natural'
+        });
+
+        // 监听情感变化
+        emotionEyes.on('emotionChanged', (newEmotion, oldEmotion) => {
+            document.getElementById('current').textContent = newEmotion;
+            document.getElementById('loaded').textContent = emotionEyes.loadedStyles.size;
+        });
+
+        // 设置情感
+        async function setEmotion(emotion) {
+            await emotionEyes.setEmotion(emotion);
+        }
+
+        // 随机表情
+        async function randomEmote() {
+            await emotionEyes.randomEmotion();
+        }
+
+        // 播放序列
+        async function playSequence() {
+            const sequence = ['happy', 'surprised', 'thinking', 'sad', 'natural'];
+            await emotionEyes.playSequence(sequence, 800);
+        }
+
+        // 重置
+        function resetEmotion() {
+            emotionEyes.setEmotion('natural');
+        }
+
+        // 键盘快捷键
+        document.addEventListener('keydown', (e) => {
+            const shortcuts = {
+                '1': 'natural',
+                '2': 'happy',
+                '3': 'sad',
+                '4': 'angry',
+                '5': 'surprised',
+                '6': 'thinking',
+                '7': 'touched',
+                '8': 'love',
+                '9': 'crying',
+                '0': 'disappointed'
+            };
+
+            if (shortcuts[e.key]) {
+                setEmotion(shortcuts[e.key]);
+            }
+
+            if (e.key === 'r') randomEmote();
+            if (e.key === ' ') playSequence();
+        });
+
+        // 初始化提示
+        console.log('%c🎭 Emotion Eyes Demo', 'color: #667eea; font-size: 18px; font-weight: bold;');
+        console.log('%c使用键盘快捷键 1-0 切换情感，按 r 随机表情，按 Space 播放序列', 'color: #666;');
+    </script>
+</body>
+</html>

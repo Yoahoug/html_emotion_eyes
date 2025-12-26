@@ -1,0 +1,14 @@
+/* Reject 3: 嫌弃 - 侧身闭眼，不看你 */
+.face.reject { 
+    --eye-color: #ffaa33; 
+    transform: translateX(40px); /* 整个脸往右移 */
+}
+
+.face.reject .eye {
+    height: 10px; width: 100px; /* 闭眼 */
+    border-radius: 5px;
+}
+
+/* 两个眼睛都变成这种形状 > >  */
+.face.reject .left .eye { transform: rotate(30deg); }
+.face.reject .right .eye { transform: rotate(30deg); }

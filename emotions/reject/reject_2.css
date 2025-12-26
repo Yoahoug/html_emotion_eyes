@@ -1,0 +1,15 @@
+/* Reject 2: 拒绝 - 眼睛变成 X 形状 */
+.face.reject { --eye-color: #ff3333; }
+
+.face.reject .eye {
+    width: 110px; height: 110px;
+    background: transparent;
+    border-radius: 0;
+    /* 用渐变画 X */
+    background: 
+        linear-gradient(45deg, transparent 40%, var(--eye-color) 40%, var(--eye-color) 60%, transparent 60%),
+        linear-gradient(-45deg, transparent 40%, var(--eye-color) 40%, var(--eye-color) 60%, transparent 60%);
+    animation: reject-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes reject-pop { from {transform: scale(0);} to {transform: scale(1);} }

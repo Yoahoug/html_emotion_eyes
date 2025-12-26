@@ -1,0 +1,8 @@
+.face.reject { animation: shake-no 0.4s infinite; }
+.face.reject .eye { height: 10px; width: 110px; border-radius: 5px; }
+
+@keyframes shake-no { 
+    0%,100% {transform:translateX(0);} 
+    25% {transform:translateX(-12px);} 
+    75% {transform:translateX(12px);} 
+}

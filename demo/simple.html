@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单演示</title>
+    <link rel="stylesheet" href="../css/core.css">
+    <link rel="stylesheet" href="../emotions/happy/happy_1.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #000;
+        }
+        
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        button {
+            padding: 10px 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="face happy" id="face">
+        <div class="eye-wrapper left">
+            <div class="eye"></div>
+            <div class="cheek"></div>
+        </div>
+        <div class="eye-wrapper right">
+            <div class="eye"></div>
+            <div class="cheek"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="change('happy')">Happy</button>
+        <button onclick="change('sad')">Sad</button>
+        <button onclick="change('thinking')">Thinking</button>
+        <button onclick="change('surprised')">Surprised</button>
+        <button onclick="change('angry')">Angry</button>
+        <button onclick="change('love')">Love</button>
+    </div>
+
+    <script src="../js/emotion-controller.js"></script>
+    <script>
+        const emotionEyes = new EmotionController('#face', {
+            emotionDir: '../emotions/'
+        });
+
+        async function change(emotion) {
+            await emotionEyes.setEmotion(emotion);
+        }
+    </script>
+</body>
+</html>

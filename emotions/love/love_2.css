@@ -1,0 +1,33 @@
+/* 怦然心动：尝试模拟心形跳动 */
+.face.love { 
+    --eye-color: #ff3366; 
+}
+
+.face.love .eye {
+    width: 120px; 
+    height: 120px;
+    border-radius: 0; /* 重置 */
+    background-color: var(--eye-color);
+    /* 这里用 clip-path 画一个简易的心形/钻石形 */
+    clip-path: path('M 50 20 Q 15 0 15 35 Q 15 65 50 100 Q 85 65 85 35 Q 85 0 50 20');
+    /* 注意：clip-path 的坐标是基于 0-100 的 viewbox 或者百分比，这里简单用 transform 调整 */
+    transform-origin: center bottom;
+    animation: heart-throb 0.8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* 如果 clip-path 兼容性有问题，回退方案是调整 border-radius */
+@supports not (clip-path: path('...')) {
+    .face.love .eye {
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes heart-throb {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+}

@@ -1,0 +1,18 @@
+/* Disappointed 2: 翻白眼 - 眼球向上转动露出眼白(这里用位置模拟) */
+.face.disappointed { --eye-color: #8899a6; }
+
+.face.disappointed .eye-wrapper {
+    overflow: hidden; /* 限制眼球范围 */
+    height: 120px;
+}
+
+.face.disappointed .eye {
+    height: 100px; width: 100px; border-radius: 50%;
+    animation: eye-roll 4s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes eye-roll {
+    0%, 10% { transform: translateY(0); }
+    20%, 80% { transform: translateY(-70px); opacity: 0.5; } /* 翻上去 */
+    90%, 100% { transform: translateY(0); }
+}

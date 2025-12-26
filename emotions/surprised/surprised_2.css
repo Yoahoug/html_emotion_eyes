@@ -1,0 +1,22 @@
+/* Surprised 2: 惊吓 - 变成极小的瞳孔 */
+.face.surprised { --eye-color: #ffffff; }
+
+.face.surprised .eye-wrapper {
+    /* 给一个白色半透明背景模拟眼白 */
+    background: rgba(255,255,255,0.1); 
+    border-radius: 50%;
+}
+
+.face.surprised .eye {
+    width: 30px; height: 30px; /* 极小 */
+    box-shadow: 0 0 10px #fff;
+    animation: shock-shake 0.2s infinite;
+}
+
+@keyframes shock-shake {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(2px, 2px); }
+    50% { transform: translate(-2px, -2px); }
+    75% { transform: translate(-2px, 2px); }
+    100% { transform: translate(0,0); }
+}

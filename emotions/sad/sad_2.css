@@ -1,0 +1,22 @@
+/* 消沉：眼神黯淡，形状向外下垂 */
+.face.sad { 
+    --eye-color: #5b6e99; 
+    transform: translateY(40px); /* 整体位置很低 */
+}
+
+.face.sad .eye { 
+    height: 90px; 
+    width: 90px; 
+    border-radius: 50%; 
+    opacity: 0.4; /* 很暗淡 */
+    animation: sad-sigh 6s infinite ease-in-out;
+}
+
+.face.sad .left .eye { transform: rotate(-15deg); }
+.face.sad .right .eye { transform: rotate(15deg); }
+
+@keyframes sad-sigh { 
+    0%, 20% { transform: scaleY(1); }
+    50% { transform: scaleY(0.9); } /* 叹气扁一点 */
+    100% { transform: scaleY(1); } 
+}

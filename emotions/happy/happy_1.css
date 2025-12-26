@@ -1,0 +1,9 @@
+.face.happy { animation: happy-bounce 0.6s infinite alternate ease-in-out; }
+.face.happy .eye {
+    height: 65px; width: 110px; border-radius: 50% 50% 10% 10%; transform: translateY(-12px);
+}
+.face.happy .cheek { opacity: 0.7; }
+
+@keyframes happy-bounce { 
+    from { transform: translateY(-12px); } to { transform: translateY(-22px); }
+}

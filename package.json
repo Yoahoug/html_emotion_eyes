@@ -1,0 +1,68 @@
+{
+  "name": "html-emotion-eyes",
+  "version": "1.0.0",
+  "description": "A modular emotion expression library with 12 emotions and 3 animation styles each",
+  "main": "js/emotion-controller.js",
+  "types": "js/emotion-controller.d.ts",
+  "keywords": [
+    "emotion",
+    "expression",
+    "animation",
+    "css3",
+    "face",
+    "eyes",
+    "chat-bot",
+    "virtual-character",
+    "html",
+    "css"
+  ],
+  "author": {
+    "name": "Echo Team",
+    "email": "yoahoug@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-repo/html-emotion-eyes.git"
+  },
+  "homepage": "https://github.com/your-repo/html-emotion-eyes",
+  "bugs": {
+    "url": "https://github.com/your-repo/html-emotion-eyes/issues",
+    "email": "yoahoug@gmail.com"
+  },
+  "files": [
+    "emotions/",
+    "css/",
+    "js/",
+    "demo/",
+    "examples/",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "dev": "http-server -p 8000 -o",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "cleancss -o dist/emotion-eyes.min.css css/core.css emotions/**/*.css",
+    "build:js": "terser js/emotion-controller.js -o dist/emotion-controller.min.js",
+    "test": "jest",
+    "lint": "eslint js/",
+    "format": "prettier --write \"**/*.{js,css,html,md}\""
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.0",
+    "terser": "^5.15.0",
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0",
+    "jest": "^29.0.0",
+    "http-server": "^14.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

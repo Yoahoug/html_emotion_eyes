@@ -1,0 +1,22 @@
+/* 计算中：眼睛变方，像光标一样闪烁 */
+.face.thinking {
+    --eye-color: #00ffaa;
+}
+
+.face.thinking .eye {
+    height: 100px; 
+    width: 20px; /* 竖条光标 */
+    border-radius: 2px;
+    margin: 0 auto; /* 居中 */
+    animation: computing-scan 1.5s infinite ease-in-out alternate;
+}
+
+/* 两个眼睛反向运动，像在交换数据 */
+.face.thinking .left .eye { animation-delay: 0s; }
+.face.thinking .right .eye { animation-delay: 1.5s; }
+
+@keyframes computing-scan {
+    0% { width: 20px; opacity: 0.5; transform: scaleY(1); }
+    50% { width: 100px; opacity: 1; transform: scaleY(0.8); } /* 展开 */
+    100% { width: 20px; opacity: 0.5; transform: scaleY(1); }
+}

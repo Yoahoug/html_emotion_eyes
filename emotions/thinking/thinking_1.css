@@ -1,0 +1,18 @@
+.face.thinking {
+    animation: thinking-pause-tilt 6s infinite ease-in-out;
+}
+.face.thinking .eye {
+    height: 85px; width: 105px; border-radius: 50%;
+    animation: thinking-float 4s infinite ease-in-out alternate;
+}
+.face.thinking .left .eye, .face.thinking .right .eye { transform: none; }
+
+@keyframes thinking-float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(3px, -5px) scale(1.02); }
+}
+@keyframes thinking-pause-tilt {
+    0%, 40% { transform: rotate(-10deg) translate(-10px, 0); }
+    50%, 90% { transform: rotate(10deg) translate(10px, 0); }
+    100% { transform: rotate(-10deg) translate(-10px, 0); }
+}

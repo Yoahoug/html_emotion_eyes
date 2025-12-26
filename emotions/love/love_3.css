@@ -1,0 +1,44 @@
+/* Love 3: 蚊香眼 - 晕头转向的爱 */
+.face.love {
+    --eye-color: #ff1493; /* 深粉色 */
+}
+
+.face.love .eye {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: transparent;
+    
+    /* 用重复径向渐变模拟螺旋感 */
+    border: 8px dashed var(--eye-color);
+    box-shadow: 0 0 0 10px transparent, inset 0 0 20px var(--eye-color);
+    
+    animation: dizzy-spin 4s infinite linear;
+}
+
+/* 加一个中心点 */
+.face.love .eye::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px; height: 30px;
+    background: var(--eye-color);
+    border-radius: 50%;
+}
+
+.face.love .cheek {
+    background: #ff1493;
+    opacity: 0.6;
+    animation: cheek-pulse 1s infinite;
+}
+
+@keyframes dizzy-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes cheek-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.3); opacity: 0.9; }
+}

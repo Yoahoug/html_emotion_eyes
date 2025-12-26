@@ -1,0 +1,8 @@
+.face.sad { --eye-color: #4477ff; transform: translateY(30px); animation: sob 4s infinite; }
+.face.sad .eye { height: 80px; width: 100px; border-radius: 50%; opacity: 0.7; }
+.face.sad .left .eye { transform: rotate(10deg); }
+.face.sad .right .eye { transform: rotate(-10deg); }
+
+@keyframes sob { 
+    0%,100% {transform:translateY(30px);} 50% {transform:translateY(35px);} 
+}

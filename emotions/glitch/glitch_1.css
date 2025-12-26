@@ -1,0 +1,14 @@
+.face.glitch { --eye-color: #00ff00; }
+.face.glitch .eye { 
+    border-radius: 2px; 
+    animation: glitch-anim 2.5s infinite linear alternate-reverse; 
+}
+
+@keyframes glitch-anim { 
+    0% { transform: translate(0) skew(0deg); } 
+    20% { transform: translate(-3px, 2px) skew(10deg); } 
+    40% { transform: translate(3px, -2px) skew(-5deg); } 
+    60% { transform: scaleY(1.1); } 
+    80% { transform: translate(-2px, 2px); } 
+    100% { transform: translate(0); } 
+}

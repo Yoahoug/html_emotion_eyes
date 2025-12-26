@@ -1,0 +1,4 @@
+.face.angry { --eye-color: #ff2a2a; }
+.face.angry .eye { height: 110px; width: 90px; border-radius: 10px; }
+.face.angry .left .eye { transform: rotate(18deg); clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 100%); }
+.face.angry .right .eye { transform: rotate(-18deg); clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%); }

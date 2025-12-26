@@ -1,0 +1,14 @@
+/* Touched 2: 水汪汪 - 充满高光的感动 */
+.face.touched { --eye-color: #ffcc00; }
+
+.face.touched .eye {
+    width: 110px; height: 115px; border-radius: 48%;
+    /* 复杂的径向渐变模拟高光 */
+    background: radial-gradient(circle at 30% 30%, #ffffff 10%, var(--eye-color) 20%);
+    animation: watery-eyes 2s infinite ease-in-out;
+}
+
+@keyframes watery-eyes {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.02); filter: brightness(1.2); }
+}

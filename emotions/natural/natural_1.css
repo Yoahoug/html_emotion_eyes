@@ -1,0 +1,8 @@
+.face.natural .eye { animation: breathe 3.5s infinite ease-in-out; }
+
+.face.natural.blink .eye { animation: none; } /* 眨眼时暂停呼吸动画 */
+
+@keyframes breathe {
+    0%,100% {opacity:0.9; transform:scale(1);}
+    50% {opacity:1; transform:scale(1.03);}
+}

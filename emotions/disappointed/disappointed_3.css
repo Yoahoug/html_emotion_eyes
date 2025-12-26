@@ -1,0 +1,14 @@
+/* Disappointed 3: 无语 - 眼睛变成一条直线 */
+.face.disappointed { --eye-color: #cfd8dc; }
+
+.face.disappointed .eye {
+    height: 15px; width: 110px; 
+    border-radius: 4px;
+    animation: disappointed-blink 4s infinite;
+}
+
+@keyframes disappointed-blink {
+    0%, 90% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); } /* 快速且敷衍的眨眼 */
+    100% { transform: scaleY(1); }
+}

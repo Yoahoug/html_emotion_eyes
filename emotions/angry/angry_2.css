@@ -1,0 +1,32 @@
+/* 怒视 (Glower)：压低眉毛，眼睛眯成缝，呼吸沉重，不再发抖 */
+.face.angry { 
+    --eye-color: #ff0000; 
+    /* 整体稍微压低，模拟低头瞪人 */
+    transform: translateY(15px);
+}
+
+.face.angry .eye { 
+    height: 40px;    /* 眼睛用力眯起来，变得很扁 */
+    width: 105px; 
+    border-radius: 5px 5px 20px 20px; /* 上平下圆，模拟眼皮压下来的感觉 */
+    
+    /* 模拟沉重的呼吸/怒气脉冲，而不是发抖 */
+    animation: angry-seethe 3s infinite ease-in-out;
+}
+
+/* 加上非常凶狠的向内倾斜角度 ( > < ) */
+.face.angry .left .eye { transform: rotate(25deg); }
+.face.angry .right .eye { transform: rotate(-25deg); }
+
+@keyframes angry-seethe {
+    0%, 100% { 
+        box-shadow: 0 0 15px var(--eye-color); 
+        background-color: #cc0000; /* 暗红 */
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 40px var(--eye-color); 
+        background-color: #ff3333; /* 亮红 - 气炸了 */
+        transform: scale(1.05); /* 稍微膨胀 */
+    }
+}
